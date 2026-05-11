@@ -1,0 +1,6 @@
+{{- $email := promptStringOnce . "email" "Email for git user.email" "dev.ruangustavo@gmail.com" -}}
+{{- $name := promptStringOnce . "name" "Name for git user.name" "Ruan Gustavo" -}}
+
+[data]
+    email = {{ $email | quote }}
+    name = {{ $name | quote }}
