@@ -1,0 +1,28 @@
+# History
+HISTSIZE=50000
+SAVEHIST=50000
+HISTFILE=~/.zsh_history
+setopt INC_APPEND_HISTORY SHARE_HISTORY HIST_IGNORE_DUPS HIST_IGNORE_SPACE
+
+# Completion
+autoload -Uz compinit && compinit
+
+# Prompt: minimal, shows host (helps when you forget which device you're on)
+PS1='%F{cyan}%m%f:%F{yellow}%~%f %# '
+
+# mise (Node/Python version manager) — installed by bootstrap.sh
+if command -v mise >/dev/null 2>&1; then
+    eval "$(mise activate zsh)"
+fi
+
+# Bind dev servers to all interfaces so they're reachable over Tailscale
+export HOST=0.0.0.0
+
+# Editor
+export EDITOR=vim
+
+# Aliases
+alias ll='ls -lah'
+alias gst='git status'
+alias gd='git diff'
+alias tm='tmux new -A -s main'
